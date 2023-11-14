@@ -1,0 +1,19 @@
+
+.customContentButton{
+    color: #000000;
+    background: #b7aedd78;
+    padding: 5px 10px;
+    border: solid 1px rgb(126 109 133 / 46%);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.5s;
+    
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.customContentButton:hover{
+    background: linear-gradient(90deg, #dedaf078 0%, #b7aedd78 100%);
+    border: solid 1px #818181;
+}
+

@@ -1,0 +1,48 @@
+.LoginForm {
+    padding: 50px 0px;
+    height: 100%;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+}
+
+.loginButton {
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+}
+
+.loginInputs {
+    width: 100%;
+
+}
+
+.emailError {
+    color:#e76262 
+}
+
+.passwordError {
+    color: #e76262 
+}
+
+.loginError {
+    color: #e76262;
+    padding: 20px 0px;
+}
+
+.forgetPasswordLink {
+    position: absolute;
+    bottom: 70px;
+}
+
+.forgetPasswordLink a,
+.forgetPasswordLink a:visited {
+    text-decoration: none;
+    color: rgba(78, 64, 83, 0.72);
+}
+
+.forgetPasswordLink a:hover {
+    color:rgba(0, 0, 0, 0.72);
+}

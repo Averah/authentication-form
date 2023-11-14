@@ -1,24 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useCallback, useState } from 'react';
 import './App.css';
+import LoginPage from './Components/Login/LoginPage/LoginPage';
 
 function App() {
+
+  const [isAuthorized, setIsAuthorized] = useState(false)
+  const [loginError, setLoginError] = useState('')
+
+
+  const loginHandler = useCallback(() => {
+    setIsAuthorized((prev) => !prev)
+  }, [])
+
+  const loginErrorHandler = useCallback((err: string) => {
+    setLoginError(err)
+  }, [])
+
+  if (isAuthorized) {
+    return (
+      <div className="App">
+        <div className='content'>
+          <div>Авторизация прошла успешно</div>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='content'>
+        <LoginPage onAuthorized={loginHandler} onErrorReceived={loginErrorHandler} loginError={loginError} />
+      </div>
     </div>
   );
 }
