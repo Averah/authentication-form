@@ -76,7 +76,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onAuthorized, onErrorReceived, lo
       <div className={cls.forgetPasswordLink}>
         <a href=''>Забыли пароль?</a>
       </div>
-      <Button type="submit" className={cls.loginButton}>Login</Button>
+      <Button type="submit" className={cls.loginButton}>Войти</Button>
     </form>
   );
 };
