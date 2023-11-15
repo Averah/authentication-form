@@ -1,16 +1,14 @@
 {
   "files": {
-    "main.css": "/authentication-form/static/css/main.f927cc0f.css",
-    "main.js": "/authentication-form/static/js/main.55caa748.js",
-    "static/js/787.3d713186.chunk.js": "/authentication-form/static/js/787.3d713186.chunk.js",
+    "main.css": "/authentication-form/static/css/main.0410f647.css",
+    "main.js": "/authentication-form/static/js/main.a6a99417.js",
     "static/media/eyeIcon.svg": "/authentication-form/static/media/eyeIcon.0c85342377e038fd386f24f3621e55f3.svg",
     "index.html": "/authentication-form/index.html",
-    "main.f927cc0f.css.map": "/authentication-form/static/css/main.f927cc0f.css.map",
-    "main.55caa748.js.map": "/authentication-form/static/js/main.55caa748.js.map",
-    "787.3d713186.chunk.js.map": "/authentication-form/static/js/787.3d713186.chunk.js.map"
+    "main.0410f647.css.map": "/authentication-form/static/css/main.0410f647.css.map",
+    "main.a6a99417.js.map": "/authentication-form/static/js/main.a6a99417.js.map"
   },
   "entrypoints": [
-    "static/css/main.f927cc0f.css",
-    "static/js/main.55caa748.js"
+    "static/css/main.0410f647.css",
+    "static/js/main.a6a99417.js"
   ]
 }
