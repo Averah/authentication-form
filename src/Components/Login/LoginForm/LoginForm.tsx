@@ -84,7 +84,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onAuthorize, onErrorReceived, log
              && <div className={cls.loginError}>{loginError}</div>}
             {/* Заглушка для поля "забыли пароль" */}
             <div className={cls.forgetPasswordLink}>
-                <a href="/#">Забыли пароль?</a>
+                <a href="/">Забыли пароль?</a>
             </div>
             <Button disabled={isLoading} type="submit" className={cls.loginBtn}>
                 {isLoading ? 'Выполняется вход...' : 'Войти'}
