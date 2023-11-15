@@ -1,43 +1,40 @@
 .LoginForm {
-    padding: 50px 0px;
+    padding: 50px 0px 20px;
     height: 100%;
     width: 90%;
     display: flex;
     flex-direction: column;
-    position: relative;
     align-items: center;
+    justify-content: space-between;
 }
 
 .loginBtn {
-    position: absolute;
-    bottom: 15px;
     width: 100%;
 }
 
 .loginInputs {
     width: 100%;
 }
-.passwordInput {
+.passwordContainer {
     position: relative;
 }
 
-.emailError {
-    color:#e76262 
+.passwordInput {
+    padding-right: 35px;
 }
 
-.passwordError {
-    color: #e76262 
+.emailError, .passwordError, .loginError {
+    color:#e76262;
 }
 
 .loginError {
-    color: #e76262;
     padding: 20px 0px;
 }
 
-.forgetPasswordLink {
+/* .forgetPasswordLink {
     position: absolute;
     bottom: 70px;
-}
+} */
 
 .forgetPasswordLink a,
 .forgetPasswordLink a:visited {
@@ -62,10 +59,18 @@
     cursor: pointer;
   }
 
-  @media (max-width: 377px)  {
+.bottomContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+}
+
+@media (max-width: 377px)  {
     .passwordIcon {
         width: 21px;
         top: 37%;
-      }
+    }
 }
   

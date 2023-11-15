@@ -1,29 +1,28 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import classnames from 'classnames';
 import { logIn } from '../../../API/loginAPI';
 import { Button } from '../../../UI/Button/Button';
 import { Input } from '../../../UI/Input/Input';
 import { ReactComponent as EyeIcon } from '../../../assets/eyeIcon.svg';
 import cls from './LoginForm.module.css';
 
-type UserSubmitType = {
+interface UserSubmitType {
     email: string
     password: string
 }
 
-type LoginFormProps = {
+interface LoginFormProps {
     onAuthorize: (value: boolean) => void
     onErrorReceived: (error: string) => void
     loginError?: string
 }
 
-const LoginForm: React.FC<LoginFormProps> = ({ onAuthorize, onErrorReceived, loginError }) => {
+export const LoginForm: React.FC<LoginFormProps> = memo(({ onAuthorize, onErrorReceived, loginError }) => {
     const [passwordShown, setPasswordShown] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
     const togglePasswordVisiblity = () => {
-        setPasswordShown(!passwordShown);
+        setPasswordShown((prev) => !prev);
     };
 
     const {
@@ -39,14 +38,12 @@ const LoginForm: React.FC<LoginFormProps> = ({ onAuthorize, onErrorReceived, log
             if (response === 'Авторизация прошла успешно') {
                 onAuthorize(true);
                 onErrorReceived('');
-                setIsLoading(false);
             }
-            return response;
         } catch (error) {
             const err = (error as Error).message;
             onErrorReceived(err);
+        } finally {
             setIsLoading(false);
-            return err;
         }
     };
 
@@ -64,33 +61,33 @@ const LoginForm: React.FC<LoginFormProps> = ({ onAuthorize, onErrorReceived, log
                         },
                     })}
                 />
-
                 <div className={cls.emailError}>
-                    {errors?.email && (`${errors.email?.message}` || 'Error')}
+                    {errors?.email && (`${errors.email?.message}` || 'Ошибка')}
                 </div>
-                <div className={cls.passwordInput}>
+                <div className={cls.passwordContainer}>
                     <Input
                         placeholder="Введите пароль"
+                        className={cls.passwordInput}
                         type={passwordShown ? 'text' : 'password'}
                         {...register('password', { required: 'Пароль обязателен' })}
                     />
                     <EyeIcon className={cls.passwordIcon} onClick={togglePasswordVisiblity} />
                 </div>
                 <div className={cls.passwordError}>
-                    {errors?.password && (`${errors.password?.message}` || 'Error')}
+                    {errors?.password && (`${errors.password?.message}` || 'Ошибка')}
                 </div>
             </div>
             {loginError
              && <div className={cls.loginError}>{loginError}</div>}
-            {/* Заглушка для поля "забыли пароль" */}
-            <div className={cls.forgetPasswordLink}>
-                <a href="/">Забыли пароль?</a>
+            <div className={cls.bottomContainer}>
+                {/* Заглушка для поля "забыли пароль" */}
+                <div className={cls.forgetPasswordLink}>
+                    <a href="/">Забыли пароль?</a>
+                </div>
+                <Button disabled={isLoading} type="submit" className={cls.loginBtn}>
+                    {isLoading ? 'Выполняется вход...' : 'Войти'}
+                </Button>
             </div>
-            <Button disabled={isLoading} type="submit" className={cls.loginBtn}>
-                {isLoading ? 'Выполняется вход...' : 'Войти'}
-            </Button>
         </form>
     );
-};
-
-export default LoginForm;
+});

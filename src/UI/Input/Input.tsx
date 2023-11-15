@@ -6,8 +6,6 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
     className?: string;
 }
 
-export type Ref = HTMLInputElement;
-
-export const Input = forwardRef<Ref, InputProps>(({ className, ...otherProps }, ref) => (
+export const Input = forwardRef<HTMLInputElement, InputProps>(({ className, ...otherProps }, ref) => (
     <input ref={ref} className={cn(s.customInput, className)} {...otherProps} />
 ));
