@@ -5,10 +5,9 @@ import LoginPage from './Components/Login/LoginPage/LoginPage';
 function App() {
     const [isAuthorized, setIsAuthorized] = useState(false);
     const [loginError, setLoginError] = useState('');
-    const [isLoading, setIsLoading] = useState(false);
 
-    const loginHandler = useCallback(() => {
-        setIsAuthorized((prev) => !prev);
+    const loginHandler = useCallback((value: boolean) => {
+        setIsAuthorized(value);
     }, []);
 
     const loginErrorHandler = useCallback((err: string) => {

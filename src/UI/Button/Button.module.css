@@ -1,5 +1,5 @@
 
-.customContentButton{
+.customButton {
     color: #000000;
     background: #b7aedd78;
     padding: 5px 10px;
@@ -12,8 +12,13 @@
     font-weight: 500;
 }
 
-.customContentButton:hover{
+.customButton:hover {
     background: linear-gradient(90deg, #dedaf078 0%, #b7aedd78 100%);
     border: solid 1px #818181;
 }
 
+.customButton:disabled{
+    opacity: 0.5;
+    background: #b7aedd78;
+    border: solid 1px rgb(126 109 133 / 46%);
+}

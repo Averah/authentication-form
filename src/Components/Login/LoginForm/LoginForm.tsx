@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import classnames from 'classnames';
 import { logIn } from '../../../API/loginAPI';
 import { Button } from '../../../UI/Button/Button';
 import { Input } from '../../../UI/Input/Input';
@@ -12,13 +13,14 @@ type UserSubmitType = {
 }
 
 type LoginFormProps = {
-    onAuthorized: () => void
+    onAuthorize: (value: boolean) => void
     onErrorReceived: (error: string) => void
     loginError?: string
 }
 
-const LoginForm: React.FC<LoginFormProps> = ({ onAuthorized, onErrorReceived, loginError }) => {
+const LoginForm: React.FC<LoginFormProps> = ({ onAuthorize, onErrorReceived, loginError }) => {
     const [passwordShown, setPasswordShown] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     const togglePasswordVisiblity = () => {
         setPasswordShown(!passwordShown);
@@ -31,16 +33,19 @@ const LoginForm: React.FC<LoginFormProps> = ({ onAuthorized, onErrorReceived, lo
     } = useForm<UserSubmitType>({ mode: 'onBlur' });
 
     const onSubmit = async (data: UserSubmitType) => {
+        setIsLoading(true);
         try {
             const response = await logIn(data);
             if (response === 'Авторизация прошла успешно') {
-                onAuthorized();
+                onAuthorize(true);
                 onErrorReceived('');
+                setIsLoading(false);
             }
             return response;
         } catch (error) {
             const err = (error as Error).message;
             onErrorReceived(err);
+            setIsLoading(false);
             return err;
         }
     };
@@ -76,12 +81,14 @@ const LoginForm: React.FC<LoginFormProps> = ({ onAuthorized, onErrorReceived, lo
                 </div>
             </div>
             {loginError
-                && <div className={cls.loginError}>{loginError}</div>}
+             && <div className={cls.loginError}>{loginError}</div>}
             {/* Заглушка для поля "забыли пароль" */}
             <div className={cls.forgetPasswordLink}>
                 <a href="/#">Забыли пароль?</a>
             </div>
-            <Button type="submit" className={cls.loginButton}>Войти</Button>
+            <Button disabled={isLoading} type="submit" className={cls.loginBtn}>
+                {isLoading ? 'Выполняется вход...' : 'Войти'}
+            </Button>
         </form>
     );
 };
