@@ -16,7 +16,9 @@
 
 .loginInputs {
     width: 100%;
-
+}
+.passwordInput {
+    position: relative;
 }
 
 .emailError {
@@ -46,3 +48,24 @@
 .forgetPasswordLink a:hover {
     color:rgba(0, 0, 0, 0.72);
 }
+
+.passwordIcon {
+    width: 24px;
+    position: absolute;
+    top: 34%;
+    right: 0.5%;
+    fill: rgba(78, 64, 83, 0.72);;
+    transition: 0.4s;
+  }
+.passwordIcon:hover {
+    fill: inherit;
+    cursor: pointer;
+  }
+
+  @media (max-width: 377px)  {
+    .passwordIcon {
+        width: 21px;
+        top: 37%;
+      }
+}
+  

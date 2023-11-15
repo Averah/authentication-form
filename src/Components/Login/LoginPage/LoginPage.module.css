@@ -22,7 +22,7 @@
 
 @media (max-width: 992px)  {
     .LoginPage {
-        width: 50%
+        width: 50%;
       }
 }
 
@@ -43,4 +43,11 @@
         width: 100%
       }
 }
+
+@media (max-width: 377px)  {
+    .LoginPage {
+        width: 100%
+      }
+}
+
 

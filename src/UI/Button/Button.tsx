@@ -1,10 +1,13 @@
-import React from 'react'
-import s from './Button.module.css'
-import cn from "classnames";
+import React from 'react';
+import cn from 'classnames';
+import s from './Button.module.css';
 
-type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>
-
-export const Button: React.FC<ButtonProps> = ({ className, children, ...otherProps }) => {
-    return <button className={cn(s.customContentButton, className)} {...otherProps}>{children}</button>
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+    className?: string;
 }
 
+export const Button: React.FC<ButtonProps> = ({ className, children, ...otherProps }) => (
+    <button type="button" className={cn(s.customContentButton, className)} {...otherProps}>
+        {children}
+    </button>
+);
