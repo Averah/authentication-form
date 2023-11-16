@@ -6,12 +6,9 @@ interface LoginPageProps {
     onAuthorize: (value: boolean) => void;
 }
 
-export const LoginPage: React.FC<LoginPageProps> = memo(({ onAuthorize }) => {
-    const [loginError, setLoginError] = useState('');
-    return (
-        <div className={cls.LoginPage}>
-            <div className={cls.loginText}>Форма авторизации</div>
-            <LoginForm onAuthorize={onAuthorize} onErrorReceived={setLoginError} loginError={loginError} />
-        </div>
-    );
-});
+export const LoginPage: React.FC<LoginPageProps> = memo(({ onAuthorize }) => (
+    <div className={cls.LoginPage}>
+        <div className={cls.loginText}>Форма авторизации</div>
+        <LoginForm onAuthorize={onAuthorize} />
+    </div>
+));

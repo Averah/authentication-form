@@ -13,13 +13,12 @@ interface UserSubmitType {
 
 interface LoginFormProps {
     onAuthorize: (value: boolean) => void
-    onErrorReceived: (error: string) => void
-    loginError?: string
 }
 
-export const LoginForm: React.FC<LoginFormProps> = memo(({ onAuthorize, onErrorReceived, loginError }) => {
+export const LoginForm: React.FC<LoginFormProps> = memo(({ onAuthorize }) => {
     const [passwordShown, setPasswordShown] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const [loginError, setLoginError] = useState('');
 
     const togglePasswordVisiblity = () => {
         setPasswordShown((prev) => !prev);
@@ -37,11 +36,11 @@ export const LoginForm: React.FC<LoginFormProps> = memo(({ onAuthorize, onErrorR
             const response = await logIn(data);
             if (response === 'Авторизация прошла успешно') {
                 onAuthorize(true);
-                onErrorReceived('');
+                setLoginError('');
             }
         } catch (error) {
             const err = (error as Error).message;
-            onErrorReceived(err);
+            setLoginError(err);
         } finally {
             setIsLoading(false);
         }
